@@ -3,6 +3,18 @@ import Card from 'react-bootstrap/Card';
 import noImage from '../dummy-post-horisontal.jpg';
 import NewsModalComponent from './NewsModal';
 
+// const a = document.querySelector('.card-body');
+// function changeColor() {
+//     a.style.backGroundColor = 'grey'
+// }
+
+// function changeColorBack() {
+//     a.style.backGroundColor = 'white'
+// }
+
+// a.addEventListener('mouseover', changeColor);
+// a.addEventListener('mouseout', changeColorBack);
+
 function NewsCardComponent() {
     const [show, setShow] = useState(false);
     return (
