@@ -18,7 +18,15 @@ function FromComponent({ show, handleClose }) {
   
     function handleSubmit(event) {
       event.preventDefault();
-      console.log(event);
+    
+    const data = {
+        q: event.target.q.value,
+        from: event.target.from.value,
+        to: event.target.to.value,
+        language: event.target.language.value,
+    };
+    console.log(data);
+
     }
 
     return (
@@ -31,7 +39,7 @@ function FromComponent({ show, handleClose }) {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label >Keywords</Form.Label>
-                        <Form.Control type="text" placeholder="Enter keywords or phrases" />
+                        <Form.Control type="text" name="q" placeholder="Enter keywords or phrases" />
                         <Form.Text className="text-muted">
                             Advanced search is supported.
                         </Form.Text>
@@ -50,13 +58,13 @@ function FromComponent({ show, handleClose }) {
                     <Form.Group className="mb-3">
                         <Form.Label>From-to</Form.Label>
                         <InputGroup className="mb-3">
-                            <Form.Control aria-label="from" />
-                            <Form.Control aria-label="to" />
+                            <Form.Control aria-label="from" name="from" />
+                            <Form.Control aria-label="to" name="to" />
                         </InputGroup>
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Select Language</Form.Label>
-                        <Form.Select>
+                        <Form.Select name="language">
                             {languages.map((lang) => (
                                 <option>{lang.label}</option>
                             ))}
