@@ -16,6 +16,11 @@ function FromComponent({ show, handleClose }) {
         return str[0].toUpperCase() + str.substring(1);
     };
   
+    function handleSubmit(event) {
+      event.preventDefault();
+      console.log(event);
+    }
+
     return (
 
         <Offcanvas show={show} onHide={handleClose}>
@@ -26,7 +31,7 @@ function FromComponent({ show, handleClose }) {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label >Keywords</Form.Label>
-                        <Form.Control type="email" placeholder="Enter keywords or phrases" />
+                        <Form.Control type="text" placeholder="Enter keywords or phrases" />
                         <Form.Text className="text-muted">
                             Advanced search is supported.
                         </Form.Text>
