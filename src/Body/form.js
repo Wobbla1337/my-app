@@ -23,7 +23,7 @@ function FromComponent({ show, handleClose }) {
                 <Offcanvas.Title>Search News</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label >Keywords</Form.Label>
                         <Form.Control type="email" placeholder="Enter keywords or phrases" />
