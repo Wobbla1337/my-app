@@ -31,5 +31,4 @@ function NewsCardComponent() {
     </>
   );
 }
-
 export default NewsCardComponent;
