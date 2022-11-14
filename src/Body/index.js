@@ -5,8 +5,10 @@ import './News.scss'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FromComponent from './form';
-function NewsGroupComponent() {
+function NewsGroupComponent({ article }) {
   const [show, setShow] = useState(false);
+  const [formResponse, setFormResponse] = useState(null);
+
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
@@ -16,13 +18,13 @@ function NewsGroupComponent() {
         Launch
       </Button>
       <Row xs={1} md={2} lg={3} className="g-2">
-        {Array.from({ length: 6 }).map((_, idx) => (
+        {formResponse?.articles.map((article, idx) => (
           <Col key={idx}>
-            <NewsCardComponent />
+            <NewsCardComponent article={article}/>
           </Col>
         ))}
       </Row>
-      <FromComponent show={show} handleClose={handleClose} />
+      <FromComponent show={show} handleClose={handleClose} setFormResponse={setFormResponse}/>
     </>
   );
 }
