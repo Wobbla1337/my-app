@@ -8,7 +8,7 @@ import moment from 'moment';
 import { getEverything } from '../../Services/apiServices';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function FromComponent({ show, handleClose, setFormResponse }) {
+function FormComponent({ show, handleClose, setFormResponse }) {
 
     const [startDateFrom, setStartDateFrom] = useState(new Date());
     const [startDateTo, setStartDateTo] = useState(new Date());
@@ -46,6 +46,7 @@ function FromComponent({ show, handleClose, setFormResponse }) {
         const response = await getEverything(data);
         const responseData = await response.json();
         setFormResponse(responseData);
+        
     }
 
     return (
@@ -111,4 +112,4 @@ function FromComponent({ show, handleClose, setFormResponse }) {
 
     );
 }
-export default FromComponent;
+export default FormComponent;

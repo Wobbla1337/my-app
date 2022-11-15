@@ -4,8 +4,9 @@ import NewsCardComponent from './NewsCard';
 import './News.scss'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-import FromComponent from './form';
-function NewsGroupComponent({ article }) {
+import FormComponent from '../Body/Form';
+
+function NewsGroupComponent() {
   const [show, setShow] = useState(false);
   const [formResponse, setFormResponse] = useState(null);
 
@@ -24,7 +25,7 @@ function NewsGroupComponent({ article }) {
           </Col>
         ))}
       </Row>
-      <FromComponent show={show} handleClose={handleClose} setFormResponse={setFormResponse}/>
+      <FormComponent show={show} handleClose={handleClose} setFormResponse={setFormResponse}/>
     </>
   );
 }

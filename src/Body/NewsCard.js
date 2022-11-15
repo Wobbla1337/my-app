@@ -7,10 +7,11 @@ import moment from 'moment';
 
 function NewsCardComponent({ article }) {
   const [show, setShow] = useState(false);
+
   return (
     <>
 
-      <Card onClick={() => setShow(true)}>
+      <Card onClick={() => {setShow(true)}}> 
         <Card.Img variant="top" src={article.urlToImage || noImage} />
         <Card.Body>
           <Card.Title>{article.title}</Card.Title>
@@ -30,7 +31,7 @@ function NewsCardComponent({ article }) {
           <small className="text-muted">{moment(article.publishedAt).format('DD.MM.YYYY')}</small>
         </Card.Footer>
       </Card>
-      <NewsModalComponent show={show} setShow={setShow} />
+      <NewsModalComponent show={show} setShow={setShow} article={article}/>
     </>
   );
 }
