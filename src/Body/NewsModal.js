@@ -19,10 +19,10 @@ function NewsModalComponent({show, setShow, article} ) {
             // width={171}
             // height={180}
             alt="171x180"
-            src={article.urlToImage}
+            src={article.urlToImage || noImage}
         />
         <Figure.Caption>
-          {article.url || noImage}
+          {article.url}
         </Figure.Caption>
     </Figure>
     <p>{article.content}</p>

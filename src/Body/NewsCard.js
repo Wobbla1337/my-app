@@ -5,6 +5,7 @@ import NewsModalComponent from './NewsModal';
 import moment from 'moment';
 
 
+
 function NewsCardComponent({ article }) {
   const [show, setShow] = useState(false);
 
@@ -35,4 +36,6 @@ function NewsCardComponent({ article }) {
     </>
   );
 }
+
+
 export default NewsCardComponent;
