@@ -8,7 +8,7 @@ import moment from 'moment';
 import { getEverything } from '../../Services/apiServices';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function FormComponent({ show, handleClose, setFormResponse }) {
+function FormComponent({ show, handleClose, setFormResponse, searchProps }) {
 
     const [startDateFrom, setStartDateFrom] = useState(new Date());
     const [startDateTo, setStartDateTo] = useState(new Date());
@@ -59,20 +59,25 @@ function FormComponent({ show, handleClose, setFormResponse }) {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label >Keywords</Form.Label>
-                        <Form.Control type="text" name="q" placeholder="Enter keywords or phrases" />
+                        <Form.Control 
+                        defaultValue={searchProps.q}
+                        type="text"
+                        name="q"
+                        placeholder="Enter keywords or phrases" />
                         <Form.Text className="text-muted">
                             Advanced search is supported.
                         </Form.Text>
                     </Form.Group>
                     {['title', 'description', 'content'].map((type) => (
                         <div key={`${type}`} className="mb-3">
-                            <Form.Check
+                            <Form.Check 
                                 label={capitalize(type)}
                                 // css: text-transform: capitalize;
                                 name="searchIn"
                                 type="checkbox"
                                 value={type}
                                 id={`inline-${type}-1`}
+                                defaultChecked={searchProps.searchIn.includes(type)}
                             />
                         </div>
                     ))}
@@ -97,7 +102,7 @@ function FormComponent({ show, handleClose, setFormResponse }) {
                     </Form.Group>
                     <Form.Group className="mb-3">
                         <Form.Label>Select Language</Form.Label>
-                        <Form.Select name="language">
+                        <Form.Select defaultValue={searchProps.languages} name="language">
                             {languages.map((lang) => (
                                 <option key={lang.code} value={lang.code}>{lang.label}</option>
                             ))}
