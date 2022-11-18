@@ -5,10 +5,11 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+
 import { getEverything } from '../../Services/apiServices';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function FormComponent({ show, handleClose, setFormResponse, searchProps }) {
+function FormComponent({ show, handleClose, setArticles, searchProps }) {
 
     const [startDateFrom, setStartDateFrom] = useState(new Date());
     const [startDateTo, setStartDateTo] = useState(new Date());
@@ -45,7 +46,7 @@ function FormComponent({ show, handleClose, setFormResponse, searchProps }) {
 
         const response = await getEverything(data);
         const responseData = await response.json();
-        setFormResponse(responseData);
+        setArticles(responseData.articles);
         
     }
 
