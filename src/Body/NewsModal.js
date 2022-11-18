@@ -28,8 +28,8 @@ function NewsModalComponent({show, setShow, article} ) {
     <p>{article.content}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={()=> window.open(article.url)}>
-            Read More
+          <Button variant="info">
+            <a href={article.url} target="_blank" rel="noreferrer">Read more</a>
           </Button>
           <Button variant="secondary" onClick={handleClose}>
             Close
