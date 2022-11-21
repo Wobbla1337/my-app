@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FormComponent from '../Body/Form';
 import { getEverything } from '../Services/apiServices';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setErrorMessage } from '../Services/stateService';
 
 function NewsGroupComponent(props) {
@@ -16,12 +16,14 @@ function NewsGroupComponent(props) {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  const defaultProps = useSelector((state) => state.defaultProps);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async function () {
       try {
-        const response = await getEverything(props);
+        const response = await getEverything(defaultProps);
         const responseData = await response.json();
         if (responseData.status === 'error') {
           throw responseData;
@@ -34,7 +36,7 @@ function NewsGroupComponent(props) {
 
 
     })();
-  }, [props, dispatch]);
+  }, [defaultProps, dispatch]);
 
   return (
     <>
@@ -52,7 +54,7 @@ function NewsGroupComponent(props) {
         show={show}
         handleClose={handleClose}
         setArticles={setArticles}
-        searchProps={props} />
+        searchProps={defaultProps} />
     </>
   );
 }

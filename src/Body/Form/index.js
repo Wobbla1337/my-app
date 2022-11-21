@@ -77,7 +77,7 @@ function FormComponent({ show, handleClose, setArticles, searchProps }) {
                                 name="searchIn"
                                 type="checkbox"
                                 value={type}
-                                id={`inline-${type}-1`}
+                                id={`${type}-1`}
                                 defaultChecked={searchProps.searchIn.includes(type)}
                             />
                         </div>
