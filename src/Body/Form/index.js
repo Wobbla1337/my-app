@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
-import { setPage } from '../../Services/stateService'
+import { setPage, setErrorMessage } from '../../Services/stateService'
 import { getEverything } from '../../Services/apiServices';
 import { useSelector, useDispatch } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -45,7 +45,7 @@ function FormComponent({ show, handleClose, setArticles, searchProps }) {
         };
 
         if(moment(data.from).isAfter(data.to)) {
-            alert("Wrong data selected");
+            dispatch(setErrorMessage("Wrong date selected"));
             return;
         }
 
