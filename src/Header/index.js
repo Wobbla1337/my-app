@@ -5,6 +5,9 @@ import logo from '../logo.svg';
 import { Link } from 'react-router-dom'
 
 function HeaderComponent() {
+    // Link component pomogaet pravilno rabotat' s ssqlkami v React prilozenii
+    // Link zapuskaet react-router, kotoryj v svoju o4ered' reshaet kakie komponenty pokazyvat'
+    // blagodarja Link i Route u nas ne perezagruzaetca stranica, a tolko renderitca komponent
     return (
         <Navbar bg="light" className ="mb-5">
             <Container>

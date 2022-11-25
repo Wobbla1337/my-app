@@ -31,7 +31,20 @@ function FormComponent({ show, handleClose, searchProps }) {
         return str[0].toUpperCase() + str.substring(1);
     };
 
+    // sobytija eto zaimodejstvie mezdu polzavatelem i nashim prilozeniem 
+    // Polzovatel 4to-to delaet v browsere, browser lovit eti izmenenija i peredajot informaciju nashemy prilozeniju
+    // v zavisimosti ot triggerov nashe prilozenie obrabatyvaet poluchennye dannye
+    // Sushestvuem mnogo raznqh triggerov, naprimer pri nazatii knopki myshi - eto 'onClick'
+    // Triggery veshajutca na elementy, za kotorymi my hotim sledit
+    // triggery zapuskajut obrabotchiki
+    // Obrabotchiki eto obqchnye funkcii
+    // Browser peredajot nashim obrabotchikam polnqj otchet o destvii/sobytii v vide objecta DOM
+    // Glavnoe svojstvo etogo objecta javlaetca 'target', v kotorom hranitca informacija ob elemente nad kotorym proizoshlo sobytie
+    // 
+
     async function handleSubmit(event) {
+        // preventDefault - eto funkcija zastavlaet browser prekratit' vypolnjat' izlvestnoe emy dejstvie etovo sobitija
+        // V nashem sluchae eto zastavlaet otmenit' otpravku dannyh na server      
         event.preventDefault();
 
         const data = {

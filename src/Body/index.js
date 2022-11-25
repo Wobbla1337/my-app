@@ -17,12 +17,24 @@ function NewsGroupComponent() {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
+  // useSelector eto react-redux Hook, kototyj sledit za Redux sostojaniem i pri nalichii izmenenij zapuskaet otrisovku komponenta
   const searchParams = useSelector((state) => state.searchParams);
 
+  // useParams eto Hook react-router-DOM dlja poluchenija informacii s ssqlki
   const { q, lang } = useParams();
-
+  // useDispatch eto Hook React Redux, blagodarja kotoromy my mozem vzaimodejstvovat' s Redux 
+  // useDispatch eto most mezdu Reactom i Reduxom
   const dispatch = useDispatch();
 
+  // useEffect - react hook, kotoryj zapuskaetca posle tovo, kak proizoshol pervqj render
+  // useEffect prinimaet 2 parametra
+  // 1: funkcija, kotoruju nuzno zapustit'
+  // 2: massive iz peremennyh, ot kotoryh budet zaviset dalnejshaja rabota useEffect
+  // vse vneshnie peremennye, kotorye my ispolzuem v funkcii dolzny byt v massive zavisimostej
+  // pri ljubqh izmenijah etih zavisimostej useEffect zapuskaetca
+  // pri izmenenijah v komponente, ne kasajushishjca zavisimosti useEffect ne zapuskajut useEffect, no kompoment renderitca
+  // poetomy v njom luche vsego rabotat' s zaprosami
+  // [lang, searchParams, dispatch, q] zapuskaetca tolki pri izmenenii etih paramentrov
   useEffect(() => {
     if(lang && searchParams.language !== lang) {
       dispatch(setSearchParams({
@@ -42,6 +54,7 @@ function NewsGroupComponent() {
           throw responseData;
         }
         setArticles(responseData.articles);
+        // Redux dejstvie neobhodimo obernut' v Dispatch, 4toby Redux vzaimodejstoval s Reactom
         dispatch(setTotalResults(responseData.totalResults))
       }
       catch (error) {
