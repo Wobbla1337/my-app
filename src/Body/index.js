@@ -57,7 +57,9 @@ function NewsGroupComponent() {
       <Button variant="outline-primary" onClick={handleShow} className="mb-3">
         Launch
       </Button>
-      <Link to="/bitcoin">Bitcoin today</Link>
+      <Button variant="outline-secondary" className="mb-3 ms-2" >
+      <Link to="/bitcoin" className="Button" style={{ textDecoration: 'none' }}>Bitcoin today</Link>
+      </Button>
       <Row xs={1} md={2} lg={3} className="g-2">
         {articles.map((article, idx) => (
           <Col key={idx}>
