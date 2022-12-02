@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 
 
-function FormComponent({ show, handleClose, searchProps }) {
+function FormComponent({ show, handleClose, searchProps, sourcesData}) {
 
     const [startDateFrom, setStartDateFrom] = useState(new Date());
     const [startDateTo, setStartDateTo] = useState(new Date());
@@ -42,8 +42,9 @@ function FormComponent({ show, handleClose, searchProps }) {
             searchIn: [...event.target.searchIn].filter(input => input.checked).map(input => input.value).join(','),
             pageSize,
             page: 1,
+            sources: event.target.source.value,
         };
-
+        
 
         if(moment(data.from).isAfter(data.to)) {
             dispatch(setErrorMessage("Wrong date selected"));
@@ -110,6 +111,12 @@ function FormComponent({ show, handleClose, searchProps }) {
                         <Form.Select defaultValue={searchProps.languages} name="language">
                             {languages.map((lang) => (
                                 <option key={lang.code} value={lang.code}>{lang.label}</option>
+                            ))}
+                        </Form.Select>
+                        <Form.Label className="mt-2">Select Source</Form.Label>
+                        <Form.Select defaultValue={searchProps.sourcesSearch} name="source">
+                            {sourcesData.map((src) => (
+                                <option key={src.id} value={src.id}>{src.name}</option>
                             ))}
                         </Form.Select>
                     </Form.Group>

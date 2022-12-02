@@ -5,7 +5,7 @@ import './News.scss'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FormComponent from '../Body/Form';
-import { getEverything } from '../Services/apiServices';
+import { getEverything, sourceData } from '../Services/apiServices';
 import { useDispatch, useSelector } from 'react-redux'
 import { setErrorMessage, setSearchParams, setTotalResults } from '../Services/stateService';
 import { useParams, Link } from 'react-router-dom';
@@ -13,6 +13,7 @@ import { useParams, Link } from 'react-router-dom';
 function NewsGroupComponent() {
   const [show, setShow] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [sources, setSources] = useState([]);
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -37,11 +38,11 @@ function NewsGroupComponent() {
           ...searchParams,
           q: q || searchParams.q,
         });
-        const responseData = await response.json();
+        const responseData = await response.json();        
         if (responseData.status === 'error') {
           throw responseData;
         }
-        setArticles(responseData.articles);
+        setArticles(responseData.articles);  
         dispatch(setTotalResults(responseData.totalResults))
       }
       catch (error) {
@@ -51,6 +52,22 @@ function NewsGroupComponent() {
 
     })();
   }, [lang, searchParams, dispatch, q]);
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const sourceResponse = await sourceData();
+        const sourceResponseData = await sourceResponse.json();
+        if (sourceResponseData.status  === 'error') {
+          throw sourceResponseData;
+        } 
+        setSources(sourceResponseData.sources);
+      }
+      catch (error) {
+        dispatch(setErrorMessage(error.message));
+      }
+    }) ();
+  }, [dispatch]);
 
   return (
     <>
@@ -71,6 +88,7 @@ function NewsGroupComponent() {
         show={show}
         handleClose={handleClose}
         setArticles={setArticles}
+        sourcesData={sources}
         searchProps={searchParams} />
     </>
   );

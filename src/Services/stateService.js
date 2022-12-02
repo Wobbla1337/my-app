@@ -14,6 +14,7 @@ const initialState = {
         searchIn: 'title,description,content',
         pageSize, 
         page: 1,
+        sourcesSearch: 'bbc-news',
     }
 };
 

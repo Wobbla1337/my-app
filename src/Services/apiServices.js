@@ -7,3 +7,10 @@ export async function getEverything(data) {
     })
     return await fetch(`${apiUrl}/v2/everything?${params}`)
 }
+
+export async function sourceData() {
+    const params = new URLSearchParams({
+        apiKey: process.env.REACT_APP_API_KEY,
+    })
+    return await fetch(`${apiUrl}/v2/top-headlines/sources?${params}`)
+}
