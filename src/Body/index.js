@@ -5,15 +5,15 @@ import './News.scss'
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import FormComponent from '../Body/Form';
-import { getEverything, sourceData } from '../Services/apiServices';
+import { getEverything, getEverythingDummy } from '../Services/apiServices';
 import { useDispatch, useSelector } from 'react-redux'
 import { setErrorMessage, setSearchParams, setTotalResults } from '../Services/stateService';
 import { useParams, Link } from 'react-router-dom';
  
-function NewsGroupComponent() {
+function BodyComponent() {
   const [show, setShow] = useState(false);
   const [articles, setArticles] = useState([]);
-  const [sources, setSources] = useState([]);
+  
 
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
@@ -47,35 +47,21 @@ function NewsGroupComponent() {
       }
       catch (error) {
         dispatch(setErrorMessage(error.message));
-        
+        const response = await getEverythingDummy();
+        const responseData = await response.json();
+        setArticles(responseData.articles);
       }
 
     })();
   }, [lang, searchParams, dispatch, q]);
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const sourceResponse = await sourceData();
-        const sourceResponseData = await sourceResponse.json();
-        if (sourceResponseData.status  === 'error') {
-          throw sourceResponseData;
-        } 
-        setSources(sourceResponseData.sources);
-      }
-      catch (error) {
-        dispatch(setErrorMessage(error.message));
-      }
-    }) ();
-  }, [dispatch]);
-
   return (
     <>
       <Button variant="outline-primary" onClick={handleShow} className="mb-3">
-        Launch
+        Search
       </Button>
       <Button variant="outline-secondary" className="mb-3 ms-2" >
-      <Link to="/bitcoin" className="Button" style={{ textDecoration: 'none' }}>Bitcoin today</Link>
+      <Link to="/news-app/bitcoin" className="Button" style={{ textDecoration: 'none' }}>Bitcoin today</Link>
       </Button>
       <Row xs={1} md={2} lg={3} className="g-2">
         {articles.map((article, idx) => (
@@ -88,10 +74,9 @@ function NewsGroupComponent() {
         show={show}
         handleClose={handleClose}
         setArticles={setArticles}
-        sourcesData={sources}
         searchProps={searchParams} />
     </>
   );
 }
 
-export default NewsGroupComponent;
+export default BodyComponent;

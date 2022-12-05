@@ -14,3 +14,12 @@ export async function sourceData() {
     })
     return await fetch(`${apiUrl}/v2/top-headlines/sources?${params}`)
 }
+
+export async function getEverythingDummy() {
+    return await fetch(`/news-app/dummy-response.json`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+    });
+}

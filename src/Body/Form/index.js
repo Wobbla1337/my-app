@@ -1,22 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { sourceData } from '../../Services/apiServices';
 import { setErrorMessage, setSearchParams } from '../../Services/stateService'
 import { useSelector, useDispatch } from 'react-redux';
 import 'react-datepicker/dist/react-datepicker.css';
 
 
-function FormComponent({ show, handleClose, searchProps, sourcesData}) {
+function FormComponent({ show, handleClose, searchProps}) {
 
     const [startDateFrom, setStartDateFrom] = useState(new Date());
     const [startDateTo, setStartDateTo] = useState(new Date());
     const dateFormat = 'dd.MM.yyyy';
     const pageSize = useSelector((state) => state.searchParams.pageSize);
     const dispatch = useDispatch();
+    const [sources, setSources] = useState([]);
 
 
     const languages = [
@@ -30,6 +32,22 @@ function FormComponent({ show, handleClose, searchProps, sourcesData}) {
     function capitalize(str) {
         return str[0].toUpperCase() + str.substring(1);
     };
+
+    useEffect(() => {
+        (async function () {
+          try {
+            const sourceResponse = await sourceData();
+            const sourceResponseData = await sourceResponse.json();
+            if (sourceResponseData.status  === 'error') {
+              throw sourceResponseData;
+            } 
+            setSources(sourceResponseData.sources);
+          }
+          catch (error) {
+            dispatch(setErrorMessage(error.message));
+          }
+        }) ();
+      }, [dispatch, setSources]);
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -115,7 +133,8 @@ function FormComponent({ show, handleClose, searchProps, sourcesData}) {
                         </Form.Select>
                         <Form.Label className="mt-2">Select Source</Form.Label>
                         <Form.Select defaultValue={searchProps.sourcesSearch} name="source">
-                            {sourcesData.map((src) => (
+                            <option value=""></option>
+                            {sources.map((src) => (
                                 <option key={src.id} value={src.id}>{src.name}</option>
                             ))}
                         </Form.Select>
