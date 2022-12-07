@@ -9,16 +9,16 @@ Each page is consist of 12 (if enought data available) news elements(cards). Eac
 Pagination at the bottom allows users to navigate through pages. 
 
 ## Application Limitations:
-`API`:\
+**`API`**:\
 Since we are using the Free version of this API, the biggest limitation of this project is that it only works on the localhost.
 
 ## Technologies used:
 In order to use this application the following API is required:\
-`API`: https://newsapi.org/ Anyone can get a free API key for personal and commercial projects, however it is limited to 100 request per day and can only be used on the localhost. An API key should be add in '.env' location with the following format: REACT_APP_API_KEY = ""
+**`API`**: https://newsapi.org/ Anyone can get a free API key for personal and commercial projects, however it is limited to 100 request per day and can only be used on the localhost. An API key should be add in '.env' location with the following format: REACT_APP_API_KEY = ""
 
-`Languages`: HTML, CSS, JavaScript.
+**`Languages`**: HTML, CSS, JavaScript.
 
-`Tools and frameworks`: React(18.2.0), Bootstrap(5.2.2), Moment(2.29.4), React Redux(8.0.5), React Router(6.4.3), SASS(1.56.1) 
+**`Tools and frameworks`**: React(18.2.0), Bootstrap(5.2.2), Moment(2.29.4), React Redux(8.0.5), React Router(6.4.3), SASS(1.56.1) 
  
 ## How to Run and Deploy the Project
 
