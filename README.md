@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# `NEWS FEED PROJECT`:
+### This news feed project allows users to search for the latest news and articles from different sources and blogs across the web in different languages by using keywords and phrases.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Description and Structure:
+The application let users to search through every article published by over 80,000 news sources and blogs in the last 4 years. A 'Search' navigation bar that can be accessed by clicking on the 'Search' button just below the header, has the form where users can sort and look for the desired news. The form includes keywords search with the advanced search by 'title', 'description' and 'content', as well as the options to sort by date, language and source.\
+Users can also search for the required news just by adding keywords in the address bar after http://localhost:3000/ (for example: http://localhost:3000/bitcoin).
 
-## Available Scripts
+Each page is consist of 12 (if enought data available) news elements(cards). Each card includes: news' photo, title, source, description, author and date published. By clicking on the element it will bring up the pop-up window where user can read the full article by clicking on the 'Read rore' button.  
+Pagination at the bottom allows users to navigate through pages. 
 
-In the project directory, you can run:
+## Application Limitations:
+`API`:\
+Since we are using the Free version of this API, the biggest limitation of this project is that it only works on the localhost.
+
+## Technologies used:
+In order to use this application the following API is required:\
+`API`: https://newsapi.org/ Anyone can get a free API key for personal and commercial projects, however it is limited to 100 request per day and can only be used on the localhost. An API key should be add in '.env' location with the following format: REACT_APP_API_KEY = ""
+
+`Languages`: HTML, CSS, JavaScript.
+
+`Tools and frameworks`: React(18.2.0), Bootstrap(5.2.2), Moment(2.29.4), React Redux(8.0.5), React Router(6.4.3), SASS(1.56.1) 
+ 
+## How to Run and Deploy the Project
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `npm run deploy`
 
-### `npm test`
+Deploys the apps.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Author
 
-### `npm run build`
+You can find my contact information by clicking on the 'Contact' link in the header of the application.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
